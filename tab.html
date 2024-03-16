@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<style>
+    .tab-box {
+        width: 100%;
+        max-width: 500px;
+        margin: 40px auto;
+    }
+
+    .tab-ul {
+        list-style: none;
+        display: flex;
+    }
+
+    .tab-li {
+        width: auto;
+        padding: 10px 20px;
+        border: 1px solid #acacac;
+        cursor: pointer;
+        color: #000;
+        background-color: #fff;
+    }
+
+    .tab-li:not(:first-child) {
+        border-left: none;
+    }
+
+    .tab-li.active {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .tab-li-text {
+        list-style: none;
+        width: 100%;
+        padding: 20px;
+    }
+</style>
+
+<body>
+    <div class="tab-box" id="contents">
+        <ul class="tab-ul">
+            <li class="tab-li" v-on:click="change('A')" v-bind:class="{'active': isActive === 'A'}">タブ1</li>
+            <li class="tab-li" v-on:click="change('B')" v-bind:class="{'active': isActive === 'B'}">タブ2</li>
+            <li class="tab-li" v-on:click="change('C')" v-bind:class="{'active': isActive === 'C'}">タブ3</li>
+        </ul>
+        <ul class="tab-text-ul">
+            <li class="tab-li-text" v-if="isActive === 'A'">コンテンツ1</li>
+            <li class="tab-li-text" v-else-if="isActive === 'B'">コンテンツ2</li>
+            <li class="tab-li-text" v-else-if="isActive === 'C'">コンテンツ3</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+                el: '#contents',
+                data: {
+                    isActive: '1'
+                },
+                methods: {
+                    change: function (num) {
+                        this.isActive = num
+                    }
+                }
+            })
+    </script>
+</body>
+
+
+</html>
